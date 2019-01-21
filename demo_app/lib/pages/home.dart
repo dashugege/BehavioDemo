@@ -50,9 +50,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           controller: _tabController,
           isScrollable: true,
           indicatorColor: Color(0xFF4A79E2),
+          indicatorSize: TabBarIndicatorSize.label,
           indicatorWeight: 3.0,
           labelColor: Color(0xFF4A79E2),
           unselectedLabelColor: Color(0xFF555555),
+        ),
+        Container(
+          decoration: BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(width: 0.5, color: Color(0xFFDEDEDE)))),
         ),
         Expanded(
           child: TabBarView(
