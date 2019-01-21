@@ -1,3 +1,4 @@
+import 'package:demo_app/pages/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -15,6 +16,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     Tab(text: '直通车'),
     Tab(text: '退款'),
     Tab(text: '跟踪'),
+  ];
+  final List<Widget> _tabViews = <Widget>[
+    Dashboard(),
+    Text('KPI页面组件占位'),
+    Text('预警页面组件占位'),
+    Text('直通车页面组件占位'),
+    Text('退款页面组件占位'),
+    Text('跟踪页面组件占位'),
   ];
   TabController _tabController;
 
@@ -48,9 +57,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         Expanded(
           child: TabBarView(
             controller: _tabController,
-            children: _homeTabs.map((Tab tab) {
-              return Center(child: Text(tab.text));
-            }).toList(),
+            children: _tabViews,
           ),
         )
       ],
