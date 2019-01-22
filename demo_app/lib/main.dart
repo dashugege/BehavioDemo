@@ -12,6 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       home: MyHomePage(),
+      theme: ThemeData(
+        scaffoldBackgroundColor: Color(0xFFFFFFFF),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -39,7 +42,6 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Image.asset(
         'assets/images/tab-$iconType$status.png',
         width: 19.0,
-        fit: BoxFit.fitWidth,
       ),
     );
   }
