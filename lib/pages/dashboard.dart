@@ -31,7 +31,10 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   Text(
                     '今日实时数据',
-                    style: TextStyle(color: Color(0xFF333333), fontSize: 16.0),
+                    style: TextStyle(
+                        color: Color(0xFF333333),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16.0),
                   )
                 ],
               ),
@@ -182,6 +185,63 @@ class _DashboardState extends State<Dashboard> {
           )
         ],
       ));
+  Widget _warningWidget = Container(
+    padding: EdgeInsets.all(15.0),
+    margin: EdgeInsets.only(bottom: 10.0),
+    color: Color(0xFFFFFFFF),
+    child: Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(right: 5.0),
+              child: Image.asset(
+                'assets/images/icon3.png',
+                width: 17.0,
+                height: 17.0,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+            Text(
+              '今日预警(异常指标数)',
+              style: TextStyle(
+                  color: Color(0xFF333333),
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16.0),
+            )
+          ],
+        ),
+      ],
+    ),
+  );
+  Widget _workEntryWidget = Container(
+    padding: EdgeInsets.all(15.0),
+    color: Color(0xFFFFFFFF),
+    child: Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(right: 5.0),
+              child: Image.asset(
+                'assets/images/icon4.png',
+                width: 17.0,
+                height: 17.0,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+            Text(
+              '工作入口',
+              style: TextStyle(
+                  color: Color(0xFF333333),
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16.0),
+            )
+          ],
+        ),
+      ],
+    ),
+  );
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -190,16 +250,8 @@ class _DashboardState extends State<Dashboard> {
       child: Column(
         children: <Widget>[
           _realDataWidget,
-          Container(
-            // A fixed-height child.
-            color: Colors.red,
-            height: 220.0,
-          ),
-          Container(
-            // A fixed-height child.
-            color: Colors.black,
-            height: 220.0,
-          ),
+          _warningWidget,
+          _workEntryWidget,
         ],
       ),
     ));
