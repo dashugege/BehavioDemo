@@ -14,10 +14,10 @@ class ProductDetail extends StatelessWidget {
                 TopModule(),
                 Divider(),
                 DataModule(title: "当月销量", list: [
-                  {"name": "GMU（支付）", "num": "265.00"},
-                  {"name": "佣金（验证）", "num": "3458.00"},
+                  {"name": "GMU(支付)", "num": "265.00"},
+                  {"name": "佣金(验证)", "num": "3458.00"},
                   {"name": "支付订单数", "num": "26665"},
-                  {"name": "GMU（验证）", "num": "265.00"},
+                  {"name": "GMU(验证)", "num": "265.00"},
                   {"name": "验证订单数", "num": "456"},
                   {"name": "退款订单数", "num": "26665"},
                   {"name": "退款率", "num": "5%"},
@@ -142,24 +142,26 @@ class DataModule extends StatelessWidget {
             alignment: WrapAlignment.start,
             children: this.list.map((i) {
               return Container(
-                width: (MediaQuery.of(context).size.width - 40.0) / 3,
-                padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
-                decoration: BoxDecoration(
-                    border: Border(
-                  bottom: BorderSide(width: 0.5, color: Colors.black26),
-                )),
-                child: Column(
-                  children: <Widget>[
-                    Text(i["name"]),
-                    Text(
-                      i["num"],
-                      style: TextStyle(
-                        color: Colors.blue,
-                      ),
-                    )
-                  ],
-                ),
-              );
+                  width: (MediaQuery.of(context).size.width - 40.0) / 3,
+                  height: 50.0,
+                  decoration: BoxDecoration(
+                      border: Border(
+                    bottom: BorderSide(width: 0.5, color: Colors.black26),
+                  )),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(i["name"]),
+                        Text(
+                          i["num"],
+                          style: TextStyle(
+                            color: Colors.blue,
+                          ),
+                        )
+                      ],
+                    ),
+                  ));
             }).toList())
       ],
     );
@@ -215,14 +217,14 @@ class TableModule extends StatelessWidget {
                           child: Container(
                               height: 30.0,
                               child: Center(
-                                child: Text("来源（UV）"),
+                                child: Text("来源(UV)"),
                               )),
                         ),
                         TableCell(
                           child: Container(
                               height: 30.0,
                               child: Center(
-                                child: Text("商品详情页（UV）"),
+                                child: Text("商品详情页(UV)"),
                               )),
                         ),
                       ]),
@@ -231,7 +233,7 @@ class TableModule extends StatelessWidget {
                       child: Container(
                           height: 30.0,
                           child: Center(
-                            child: Text("GMV（验证）"),
+                            child: Text("GMV(验证)"),
                           )),
                     ),
                     TableCell(
@@ -256,7 +258,7 @@ class TableModule extends StatelessWidget {
                           child: Container(
                               height: 30.0,
                               child: Center(
-                                child: Text("佣金（验证）"),
+                                child: Text("佣金(验证)"),
                               )),
                         ),
                         TableCell(
