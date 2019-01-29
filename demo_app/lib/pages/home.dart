@@ -1,5 +1,6 @@
 import 'package:demo_app/pages/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:demo_app/pages/product.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -23,7 +24,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     Text('预警页面组件占位'),
     Text('直通车页面组件占位'),
     Text('退款页面组件占位'),
-    Text('跟踪页面组件占位'),
+    // Text('跟踪页面组件占位'),
+    ProductDetail()
   ];
   TabController _tabController;
 
