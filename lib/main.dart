@@ -1,9 +1,11 @@
+import 'package:demo_app/app_model.dart';
 import 'package:demo_app/pages/dataAndTable.dart';
 import 'package:demo_app/pages/home.dart';
 import 'package:demo_app/pages/me.dart';
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(ScopedModel(model: AppModel(), child: MyApp()));
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
