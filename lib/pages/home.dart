@@ -2,6 +2,7 @@ import 'package:demo_app/pages/dashboard.dart';
 import 'package:demo_app/pages/kpi.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_app/pages/product.dart';
+import 'package:demo_app/pages/case.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -14,6 +15,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   final List<Tab> _homeTabs = <Tab>[
     Tab(text: '仪表盘'),
     Tab(text: 'KPI'),
+    Tab(text: '案例'),
     Tab(text: '预警'),
     Tab(text: '直通车'),
     Tab(text: '退款'),
@@ -22,6 +24,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   final List<Widget> _tabViews = <Widget>[
     Dashboard(),
     Kpi(),
+    Case(),
     Text('预警页面组件占位'),
     Text('直通车页面组件占位'),
     Text('退款页面组件占位'),
