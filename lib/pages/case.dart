@@ -289,7 +289,7 @@ class MyList extends StatelessWidget{
                                 Expanded(
                                     child: ClipOval(
                                       child: new FadeInImage.assetNetwork(
-                                        placeholder: "images/normal_user_icon.webp",//预览图
+                                        placeholder: 'assets/images/user-icon.png',
                                         fit: BoxFit.fitWidth,
                                         image: '${dataList[index]['user_avatar']}',
                                         width: 45.0,
