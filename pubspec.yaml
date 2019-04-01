@@ -22,8 +22,14 @@ dependencies:
   transparent_image: ^0.1.0
 
   # 状态管理
-  scoped_model: ^1.0.1
-
+  flutter_redux: ^0.5.3
+  redux: ^3.0.0
+  # redux的用于处理异步action的中间件
+  redux_thunk: ^0.2.1
+  
+  # 持久化工具
+  redux_persist_flutter: ^0.8.1
+  redux_persist: ^0.8.2
 
 dev_dependencies:
   flutter_test:

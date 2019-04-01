@@ -1,23 +1,59 @@
-import 'package:demo_app/app_model.dart';
 import 'package:demo_app/pages/dataAndTable.dart';
-import 'package:demo_app/pages/home.dart';
+import 'package:demo_app/pages/homeTabViews.dart';
+import 'package:demo_app/pages/login.dart';
 import 'package:demo_app/pages/me.dart';
+import 'package:demo_app/model/appState.dart';
+import 'package:demo_app/redux/reducers.dart';
+import 'package:demo_app/redux/actions.dart';
 import 'package:flutter/material.dart';
-import 'package:scoped_model/scoped_model.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
+import 'package:redux_persist_flutter/redux_persist_flutter.dart';
+import 'package:redux_persist/redux_persist.dart';
 
-void main() => runApp(ScopedModel(model: AppModel(), child: MyApp()));
+void main() async{
+  final persistor = Persistor<AppState>(
+    storage:FlutterStorage(),
+    serializer:JsonSerializer<AppState>(AppState.fromJson)
+  );
+
+  final initialState =  await persistor.load();
+
+  final store = Store<AppState>(
+    appStateReducers, 
+    initialState: initialState,
+    middleware: [persistor.createMiddleware()]
+  );
+
+  runApp(MyApp(store:store));
+}
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
+  Store<AppState> store;
+
+  MyApp({this.store});
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: MyHomePage(),
-      theme: ThemeData(
-        scaffoldBackgroundColor: Color(0xFFFFFFFF),
-      ),
-      debugShowCheckedModeBanner: false,
+  Widget build(BuildContext context){
+    return StoreProvider<AppState>(
+      store: store,
+      child: MaterialApp(
+        title: 'demo app',
+        theme: ThemeData(scaffoldBackgroundColor: Color(0xFFFFFFFF),),
+        debugShowCheckedModeBanner: false,
+        home: StoreBuilder<AppState>(
+          onInit: (store) => store.dispatch(IfLoginAction(store.state.loginToken)),
+          builder: (contex,store){
+            var loginToken = store.state.loginToken;
+            if(loginToken != null){
+              return MyHomePage();
+            }else{
+              return LoginPage();
+            }
+          },
+        )
+      )
     );
   }
 }
@@ -48,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  final _pageList = <Widget>[Home(), DataAndTable(), Me()];
+  final _pageList = <Widget>[HomeTabViews(), DataAndTable(), Me()];
 
   @override
   Widget build(BuildContext context) {
